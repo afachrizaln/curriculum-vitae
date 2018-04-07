@@ -13,12 +13,17 @@ class CreateExperiences extends AbstractMigration
     public function change()
     {
         $table = $this->table('experiences');
-        $table->addColumn('name', 'string', [
+        $table->addColumn('title', 'string', [
             'default' => null,
             'limit' => 255,
             'null' => false,
         ]);
         $table->addColumn('company', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
+        $table->addColumn('location', 'string', [
             'default' => null,
             'limit' => 255,
             'null' => false,

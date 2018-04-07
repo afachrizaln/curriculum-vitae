@@ -43,6 +43,15 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
+Router::prefix('admin', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+
+    $routes->connect('/login', ['controller' => 'Admins', 'action' => 'login']);
+    $routes->connect('/logout', ['controller' => 'Admins', 'action' => 'logout']);
+
+    $routes->fallbacks(DashedRoute::class);
+});
+
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
